@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Input Validation</title>
+</head>
+<body>
+  <form>
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <span id="usernameError" class="error"></span>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <span id="passwordError" class="error"></span>
+  </form>
+
+  <style>
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+
+  <script>
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+
+    usernameInput.addEventListener('input', function () {
+      const usernameValue = usernameInput.value.trim();
+      usernameError.textContent = usernameValue.length < 3 ? 'Username must be at least 3 characters long' : '';
+    });
+
+    passwordInput.addEventListener('input', function () {
+      const passwordValue = passwordInput.value;
+      passwordError.textContent = passwordValue.length < 8 ? 'Password must be at least 8 characters long' : '';
+    });
+  </script>
+</body>
+</html>
