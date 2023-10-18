@@ -25,3 +25,13 @@ function validatePassword() {
     passwordError.textContent = '';
   }
 }
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function (event) {
+  if (usernameInput.value.trim().length < 3 || passwordInput.value.length < 8) {
+    event.preventDefault(); // Prevent form submission
+    alert('Form submission prevented due to validation errors');
+  }
+});
+
